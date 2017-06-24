@@ -18,7 +18,7 @@ nginx_tarball_url=http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 pcre_tarball_url=http://downloads.sourceforge.net/project/pcre/pcre/${PCRE_VERSION}/pcre-${PCRE_VERSION}.tar.bz2
 headers_more_nginx_module_url=https://github.com/agentzh/headers-more-nginx-module/archive/v${HEADERS_MORE_VERSION}.tar.gz
 
-temp_dir=$(mktemp -d /tmp/nginx.XXXXXXXXXX)
+temp_dir=$(mktemp -d /var/nginx.XXXXXXXXXX)
 
 cd $temp_dir
 echo "Temp dir: $temp_dir"
@@ -36,7 +36,7 @@ echo "Downloading $headers_more_nginx_module_url"
 	cd nginx-${NGINX_VERSION}
 	./configure \
 		--with-pcre=pcre-${PCRE_VERSION} \
-		--prefix=/tmp/nginx \
+		--prefix=/var/nginx \
 		--add-module=/${temp_dir}/nginx-${NGINX_VERSION}/headers-more-nginx-module-${HEADERS_MORE_VERSION} \
         --with-http_v2_module \
         --with-http_ssl_module \

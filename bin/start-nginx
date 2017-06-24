@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-psmgr=/tmp/nginx-buildpack-wait
+psmgr=/var/nginx-buildpack-wait
 rm -f $psmgr
 mkfifo $psmgr
 
@@ -40,7 +40,7 @@ echo 'buildpack=nginx at=logs-initialized'
 #
 #if [[ -z "$FORCE" ]]
 #then
-#	FILE="/tmp/app-initialized"
+#	FILE="/var/app-initialized"
 #
 #	#We block on app-initialized so that when NGINX binds to $PORT
 #	#are app is ready for traffic.
@@ -55,7 +55,7 @@ echo 'buildpack=nginx at=logs-initialized'
 #Start NGINX
 (
 	#We expect nginx to run in foreground.
-	#We also expect a socket to be at /tmp/nginx.socket.
+	#We also expect a socket to be at /var/nginx.socket.
 	echo 'buildpack=nginx at=nginx-start'
 	bin/nginx -p . -c config/nginx.conf
 	echo 'nginx' >$psmgr
