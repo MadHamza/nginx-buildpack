@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-psmgr=/var/nginx-buildpack-wait
+psmgr=/tmp/nginx-buildpack-wait
 rm -f $psmgr
 mkfifo $psmgr
 
