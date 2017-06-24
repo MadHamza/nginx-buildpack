@@ -14,13 +14,13 @@
 # then commit and push to GitHub.  Now your buildpack will be useable on that stack
 # without paying the download/compile time penalty.
 
-temp_dir=$(mktemp -d /var/nginx.XXXXXXXXXX)
+temp_dir=$(mktemp -d /tmp/nginx.XXXXXXXXXX)
 
-echo "Serving files from /var on $PORT"
-cd /var
+echo "Serving files from /tmp on $PORT"
+cd /tmp
 python -m SimpleHTTPServer $PORT &
 
-cp ~/bin/nginx "/var/nginx"
+cp ~/bin/nginx "/tmp/nginx"
 
 while true
 do
